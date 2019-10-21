@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_main"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/light_gray"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dimen_10">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/asset_mangment_text"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimens_20sp" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_5dp">
+
+                    <ImageView
+                        android:id="@+id/asset_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_asset" />
+
+                    <ImageView
+                        android:id="@+id/udasst_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_repair" />
+
+                    <ImageView
+                        android:id="@+id/transfer_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_transfer" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/udretire_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_retirement" />
+
+                    <ImageView
+                        android:id="@+id/udassettransf_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_movement" />
+
+                    <ImageView
+                        android:id="@+id/assetDismantle_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_dismantle"
+                        />
+
+                </TableRow>
+            </TableLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@color/light_gray"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dimen_10">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/material_mangment_text"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimens_20sp" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_5dp">
+
+                    <ImageView
+                        android:id="@+id/workorder_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_outbound" />
+
+                    <ImageView
+                        android:id="@+id/mainvuse_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_refund" />
+
+                    <ImageView
+                        android:id="@+id/udstockt_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_stocktaking" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/po_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_receive" />
+
+                    <ImageView
+                        android:id="@+id/maainvuse_image_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_transferm" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/size_5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_asset"
+                        android:visibility="invisible" />
+
+                </TableRow>
+            </TableLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

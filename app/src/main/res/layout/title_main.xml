@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_relativelayout_id"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/title_heiht_size"
+    android:background="@color/colorPrimaryDark">
+
+
+    <ImageView
+        android:id="@+id/title_back_id"
+        android:layout_width="@dimen/dimens_30dp"
+        android:layout_height="@dimen/dimens_30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/size_5dp"
+        android:src="@mipmap/ic_back" />
+
+    <TextView
+        android:id="@+id/title_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimens_20sp" />
+
+
+    <ImageView
+        android:id="@+id/title_add"
+        android:layout_width="@dimen/dimens_30dp"
+        android:layout_height="@dimen/dimens_30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:src="@drawable/ic_add"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/sbmit_id"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/size_5dp"
+        android:background="@color/sb__transparent"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimens_16sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

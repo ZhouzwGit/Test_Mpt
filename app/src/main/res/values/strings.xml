@@ -1,0 +1,177 @@
+<resources>
+    <string name="app_name">MPT-IM</string>
+    <!--权限设置-->
+    <string name="settings">Seting</string>
+    <string name="help">Help</string>
+   <!-- <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。</string>-->
+    <string name="string_help_text">The current application lacks the necessary permissions。\n\nPlease click\"Seting\"-\"Permissins\"-Open the required Permissions 。\n\nFinally double click the back button,back to the application。</string>
+    <string name="quit">Quit</string>
+    <string name="user_name_text">Username</string>
+    <string name="pass_word_text">Password</string>
+    <string name="remenber_pass_text">Remember the password</string>
+    <string name="login_text">Login</string>
+    <string name="ip_config">Configure</string>
+    <string name="quit2">Quit</string>
+    <string name="properties">Properties</string>
+    <string name="option">Option</string>
+    <string name="back">Back</string>
+    <string name="start">be starting …</string>
+    <string name="approve">be approve …</string>
+
+
+    <string name="login_error_empty_user">Username can not  be Empty</string>
+    <string name="login_error_empty_passwd">Password can not  be Empty</string>
+    <string name="login_loging">Is login later please...</string>
+
+    <!-- 登录界面 key-->
+    <string name="logined_member_username">logined_member_username</string>
+    <string name="logined_member_password">logined_member_password</string>
+    <string name="logined_member_ischeck">logined_member_ischeck</string>
+    <string name="logined_user_isoffline">logined_user_isoffline</string>
+    <string name="login_insertOrg">login_insertOrg</string>
+    <string name="login_insertSite">login_insertSite</string>
+    <string name="login_personId">login_personId</string>
+    <string name="login_userName">login_userName</string>
+    <string name="login_displayName">login_displayName</string>
+    <string name="login_department">login_department</string>
+    <string name="ip_address">ip_address</string>
+
+    <!--网络信息提示-->
+    <string name="error_title">error</string>
+    <string name="error_obtain_once">can not get ONCE</string>
+    <string name="error_network_exception">Network communication is abnormal,Please try again!</string>
+    <string name="error_network_disconnect">Network issue,Please turn on wifi or mobile network</string>
+    <string name="error_reply">Confirm Failed</string>
+    <string name="error_create_topic">Can not create topic</string>
+    <string name="error_login">Login Failed</string>
+    <string name="error_fav_nodes">Favorite node Error</string>
+    <string name="error_fav_topic">Favorite Topic Error </string>
+    <string name="error_get_profile">Can not get the user profile</string>
+    <string name="error_unknown">Unknown Error</string>
+    <string name="load">Loading...</string>
+    <string name="load1">have no data</string>
+    <string name="have_not_data_txt">No related data</string>
+    <string name="loading">Loading...</string>
+
+    <string name="search_text">XXsearch</string>
+
+    <string name="get_data_info_fail">Failed to get information</string>
+    <string name="login_success">Log in successfully</string>
+    <string name="login_successful_hint">Log in successfully</string>
+    <!--退出程序-->
+    <string name="exit_text">Again according to exit the program</string>
+
+    <!--主菜单-->
+    <string name="asset_mangment_text">Asset Mangment</string>
+    <string name="material_mangment_text">Material Mangment</string>
+    <string name="main_text">Home</string>
+
+    <!--资产查询-->
+    <string name="asset_text">Asset</string>
+    <string name="location_text">Location:</string>
+    <string name="sn_text">SN:</string>
+    <string name="item_text">Item:</string>
+
+    <!--采购接收-->
+    <string name="have_not_data">no data</string>
+    <string name="po_ponum">Order:</string>
+    <string name="po_description">Desc.:</string>
+    <string name="po_revisionnum">Revision:</string>
+    <string name="po_status">Status:</string>
+
+    <!-- SN扫描 -->
+    <string name="scan_text">Please put the SN in the box</string>
+    <string name="scanning_text">SN scan</string>
+    <string name="description_text">Description:</string>
+
+    <string name="hint_item_num_title">no  data</string>
+    <string name="category_text">Category:</string>
+    <string name="vendor_text">Vendor:</string>
+    <string name="install_date_text">Install Date:</string>
+    <string name="pat_date_text">Pat Date:</string>
+    <string name="configure_text">Configure:</string>
+    <string name="phase_text">Phase:</string>
+    <string name="asset_transfer">Asset Transfer</string>
+    <string name="asset_transferline">Order Lines</string>
+    <string name="order_text">Order:</string>
+    <string name="from_storeroom_text">From Storeroom:</string>
+    <string name="inventory_owner_text">Inventory Owner:</string>
+    <string name="type_text">Type</string>
+    <string name="item1_text">Item</string>
+    <string name="to_storeroom_text">To Storeroom</string>
+    <string name="descrition_text">Descrition</string>
+    <string name="asset_repair_text">Asset Repair</string>
+    <string name="install_date1_text">Repair Date:</string>
+    <string name="sn_text1">SN</string>
+    <string name="location_text_id">Location</string>
+    <string name="repair_date_text">Repair Date</string>
+    <string name="asset_retirement_text">Asset Retirement</string>
+    <string name="retire_no_text">Retire No:</string>
+    <string name="retire_date_text">Retire Date:</string>
+    <string name="asset_management_text">Asset Movement</string>
+    <string name="from_department_text">From Dep:</string>
+    <string name="fromloc_text">Fromloc:</string>
+    <string name="tosite_text">Target Location:</string>
+    <string name="assetnum_text">Assetnum:</string>
+    <string name="assetnum_text1">Assetnum</string>
+    <string name="desc_text">Desc</string>
+    <string name="Material_outbound_text">Material Outbound</string>
+    <string name="material_refund_text">Material Refund</string>
+    <string name="inv_owner_text">Inv Owner:</string>
+    <string name="usetype_text2">Transfer Type:</string>
+    <string name="line_type_text">Line Type</string>
+    <string name="quantity_text">Qty</string>
+    <string name="to_loc_text">To Loc</string>
+    <string name="to_storeroom1_text">To Storeroom</string>
+    <string name="material_stocktaking_text">Material Stocktaking</string>
+    <string name="vendor1_text">Vendor:</string>
+    <string name="material_receive_text">Material Receive</string>
+    <string name="revision_text">Revision:</string>
+    <string name="material_transfer_text">Material Transfer</string>
+    <string name="invuselinenum_text">INVUSELINENUM</string>
+    <string name="invusenum_text">INVUSENUM</string>
+    <string name="usetype_text">Usage Type:</string>
+    <string name="linetype_text">Line Type:</string>
+    <string name="itemnum_text">Item:</string>
+    <string name="tostoreloc_text">To Storeroom:</string>
+    <string name="rotassetnum_text">Rotating Asset:</string>
+    <string name="issueto_text">Issue To:</string>
+    <string name="quantity_text2">Quantity:</string>
+    <string name="frombin_text">From Bin:</string>
+    <string name="tositeid_text">To Site:</string>
+    <string name="tobin_text">To Bin:</string>
+    <string name="conversion_text">Conversion Factor:</string>
+    <string name="newphyscnt_text">New Physical Count:</string>
+    <string name="remark_text">Remark:</string>
+    <string name="checkserial_text">New Serial:</string>
+    <string name="ischeck_text">Ischeck?</string>
+    <string name="orderqty_text">Quantity:</string>
+    <string name="wonum_text">Transfer:</string>
+    <string name="status_text">Status:</string>
+    <string name="statusdate_text">Status Date:</string>
+    <string name="line_text">Line:</string>
+    <string name="udrepdate_text">Repair Date:</string>
+    <string name="udasstnum_text">Asset/Spare:</string>
+    <string name="retireloc_text">Retire to Location:</string>
+    <string name="retiredate_text">Retire Date:</string>
+    <string name="fromsite_text">From Site:</string>
+    <string name="tosite_text2">To Site:</string>
+    <string name="location_text2">Storeroom:</string>
+    <string name="restype_text">Reservation Type:</string>
+    <string name="storelocsite_text">Storeroom Site:</string>
+    <string name="unitcost_text">Unit Cost:</string>
+    <string name="orderunit_text">Order Unit:</string>
+    <string name="siteid_text">Site:</string>
+    <string name="trantype_text">Transaction Type:</string>
+    <string name="add_plan_text">Add Plan</string>
+    <string name="add_actural_text">Add Actural</string>
+    <string name="have_load_out_all_the_data">have load out all the data</string>
+    <string name="item2_text">Item</string>
+    <string name="line3_text">Line</string>
+    <string name="usage_type3_text">Usage Type</string>
+    <string name="return_item_text">Return Item</string>
+
+    <string name="recoder_item_text">Save success</string>
+    <string name="create_date">Create Date</string>
+
+</resources>
