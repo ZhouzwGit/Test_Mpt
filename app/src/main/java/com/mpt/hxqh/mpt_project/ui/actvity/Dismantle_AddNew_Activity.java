@@ -246,8 +246,10 @@ public class Dismantle_AddNew_Activity extends BaseActivity {
         new AsyncTask<String, String, WebResult>() {
             @Override
             protected WebResult doInBackground(String... strings) {
-                WebResult reviseresult = AndroidClientService.AddRetire(Dismantle_AddNew_Activity.this, descriptionTextView.getText().toString(),
+//                WebResult reviseresult = AndroidClientService.insertMbo(Dismantle_AddNew_Activity.this,descriptionTextView.getText().toString(),Constants.DISMANTLE_NAME,Constants.TRANSFER_URL,AccountUtils.getpersonId(Dismantle_AddNew_Activity.this));
+               WebResult reviseresult = AndroidClientService.AddRetire(Dismantle_AddNew_Activity.this, descriptionTextView.getText().toString(),
                         locationTextView.getText().toString(), retirelocTextView.getText().toString(), retiredateTextView.getText().toString(), AccountUtils.getpersonId(Dismantle_AddNew_Activity.this), Constants.TRANSFER_URL);
+
                 return reviseresult;
             }
 
