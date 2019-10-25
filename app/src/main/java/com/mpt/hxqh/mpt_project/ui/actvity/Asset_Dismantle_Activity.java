@@ -239,9 +239,10 @@ public class Asset_Dismantle_Activity extends BaseActivity implements SwipeRefre
                             normalListDialog.superDismiss();
                             break;
                         case 1://Add
-/*                            Intent intent = new Intent(Asset_Dismantle_Activity.this, Udasst_AddNew_Activity.class);
-                            startActivity(intent);*/
                             normalListDialog.superDismiss();
+                           Intent intent = new Intent(Asset_Dismantle_Activity.this, Dismantle_AddNew_Activity.class);
+                            startActivity(intent);
+
                             break;
                     }
                     normalListDialog.dismiss();

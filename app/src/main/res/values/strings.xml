@@ -3,7 +3,7 @@
     <!--权限设置-->
     <string name="settings">Seting</string>
     <string name="help">Help</string>
-   <!-- <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。</string>-->
+    <!-- <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。</string>-->
     <string name="string_help_text">The current application lacks the necessary permissions。\n\nPlease click\"Seting\"-\"Permissins\"-Open the required Permissions 。\n\nFinally double click the back button,back to the application。</string>
     <string name="quit">Quit</string>
     <string name="user_name_text">Username</string>

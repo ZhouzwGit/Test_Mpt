@@ -242,7 +242,8 @@
         <activity android:name=".ui.actvity.MatusetransScan_Activity" />
         <activity android:name=".ui.actvity.Asset_Dismantle_Activity" />
         <activity android:name=".ui.actvity.Dismantle_Details_Activity" />
-        <activity android:name=".ui.actvity.DismantleScan_Activity"></activity>
+        <activity android:name=".ui.actvity.DismantleScan_Activity" />
+        <activity android:name=".ui.actvity.Dismantle_AddNew_Activity"></activity>
     </application>
 
 </manifest>
