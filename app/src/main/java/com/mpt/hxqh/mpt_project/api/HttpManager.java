@@ -437,6 +437,14 @@ public class HttpManager {
 
     }
 
+    public static String getDismantleLineURL(String udordernum, int curpage, int showcount, String sn) {
+        if ("".equals(sn)) {
+            return "{'appid':'" + Constants.DISMANTLE_APPID + "','objectname':'" + Constants.DISMANTLELINE_NAME + "','curpage':" + curpage + ",'showcount':" + showcount + ",'option':'read','condition':{'UDORDERNUM':'=" + udordernum + "'}}";
+        } else {
+            return "{'appid':'" + Constants.DISMANTLE_APPID + "','objectname':'" + Constants.DISMANTLELINE_NAME + "','curpage':" + curpage + ",'showcount':" + showcount + ",'option':'read','condition':{'UDORDERNUM':'=" + udordernum + "','SERIAL':'=" + sn + "'}}";
+        }
+    }
+
     public static String getUdreplaceURL(String udordernum, int curpage, int showcount) {
         return "{'appid':'" + Constants.DISMANTLE_APPID + "','objectname':'" + Constants.UDREPLACE_NAME + "','curpage':" + curpage + ",'showcount':" + showcount + ",'option':'read','condition':{'UDORDERNUM':'=" + udordernum + "'}}";
 

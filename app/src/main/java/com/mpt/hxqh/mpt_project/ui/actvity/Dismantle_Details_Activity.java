@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.animation.BounceEnter.BounceTopEnter;
@@ -21,8 +22,6 @@ import com.flyco.dialog.widget.NormalDialog;
 import com.flyco.dialog.widget.NormalListDialog;
 import com.mpt.hxqh.mpt_project.R;
 import com.mpt.hxqh.mpt_project.adpter.DismantleLineAdapter;
-import com.mpt.hxqh.mpt_project.adpter.MatusetransAdapter;
-import com.mpt.hxqh.mpt_project.adpter.WpmaterialAdapter;
 import com.mpt.hxqh.mpt_project.api.HttpManager;
 import com.mpt.hxqh.mpt_project.api.HttpRequestHandler;
 import com.mpt.hxqh.mpt_project.api.JsonUtils;
@@ -30,8 +29,6 @@ import com.mpt.hxqh.mpt_project.bean.Results;
 import com.mpt.hxqh.mpt_project.manager.AppManager;
 import com.mpt.hxqh.mpt_project.model.DISMANTLE;
 import com.mpt.hxqh.mpt_project.model.DISMANTLELINE;
-import com.mpt.hxqh.mpt_project.model.MATUSETRANS;
-import com.mpt.hxqh.mpt_project.model.WPMATERIAL;
 import com.mpt.hxqh.mpt_project.ui.widget.SwipeRefreshLayout;
 import com.mpt.hxqh.mpt_project.unit.MessageUtils;
 
@@ -56,7 +53,6 @@ public class Dismantle_Details_Activity extends BaseActivity {
     private TextView location;
 
     private DISMANTLE dismantle;
-
     /**
      * 行表
      **/
@@ -234,9 +230,19 @@ public class Dismantle_Details_Activity extends BaseActivity {
                             break;
 //                        case 1://Route
 //                            break;
-                        case 1://Add plan
-                            normalListDialog.superDismiss();
+                        case 1://Scan
+                            if ("APPR".equals(dismantle.getSTATUS()) || "rece".equalsIgnoreCase(dismantle.getSTATUS())){
+                                Intent lineIntent = new Intent(Dismantle_Details_Activity.this, DismantleScan_Activity.class);
+                                lineIntent.putExtra("assetnum",dismantle.getUDORDERNUM());
+                                lineIntent.putExtra("status",dismantle.getSTATUS());
+                                startActivity(lineIntent);
+                            }else {
+                                Toast.makeText(Dismantle_Details_Activity.this,"Not in scaning status",Toast.LENGTH_SHORT).show();
+                            }
                             break;
+
+//                            normalListDialog.superDismiss();
+//                            break;
                         case 2://Add actural
                             normalListDialog.superDismiss();
                             break;

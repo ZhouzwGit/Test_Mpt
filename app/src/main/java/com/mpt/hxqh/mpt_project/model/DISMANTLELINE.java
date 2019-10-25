@@ -17,6 +17,8 @@ public class DISMANTLELINE implements Serializable {
     private String UDREMARK;
     private String UDTOLOC;
     private String UDORDERNUM;
+    private  String SCANSN;
+    private  String SECSCAN;
 
     public String getUDORDERNUM() {
         return UDORDERNUM;
@@ -88,5 +90,35 @@ public class DISMANTLELINE implements Serializable {
 
     public String getUDTOLOC() {
         return UDTOLOC;
+    }
+
+    public String getSCANSN() {
+        return SCANSN;
+    }
+
+    public void setSCANSN(String SCANSN) {
+        this.SCANSN = SCANSN;
+    }
+
+    public String getSECSCAN() {
+        return SECSCAN;
+    }
+
+    public void setSECSCAN(String SECSCAN) {
+        this.SECSCAN = SECSCAN;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"UDREMARK\":\"")
+                .append(UDREMARK ==null?"": UDREMARK).append('\"');
+        sb.append(",\"SCANSN\":\"")
+                .append(SCANSN==null?"":SCANSN).append('\"');
+        sb.append(",\"SECSCAN\":\"")
+                .append(SECSCAN==null?"":SECSCAN).append('\"');
+        sb.append(",\"relationShip\":[{\"\":\"\"}]");
+        sb.append('}');
+        return sb.toString();
     }
 }
