@@ -1212,7 +1212,7 @@ public class AndroidClientService {
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
-        SoapObject soapReq = new SoapObject(NAMESPACE, "mobileserviceUpdateMbo");
+        SoapObject soapReq = new SoapObject(NAMESPACE, "mobileserviceInsertMbo");
         soapReq.addProperty("json", json);//参数
         soapReq.addProperty("mboObjectName", mboObjectName);//表名
         soapReq.addProperty("flag", 1);//表名
@@ -1225,8 +1225,9 @@ public class AndroidClientService {
             if (AccountUtils.getIpAddress(context).startsWith("https")) {
                 SslRequest.allowAllSSL(AccountUtils.getIpAddress(context) + url + "?wsdl", context);
                 HttpsTransportSE httpTransport = new HttpsTransportSE(host, port, url + "?wsdl", timeOut);
+                //((HttpsServiceConnectionSE) httpTransport.getServiceConnection()).setSSLSocketFactory();
                 httpTransport.debug = true;
-                httpTransport.call(NAMESPACE + "/mobileserviceUpdateMbo", soapEnvelope);
+                httpTransport.call(NAMESPACE + "/mobileserviceInsertMbo", soapEnvelope);
             } else {
                 HttpTransportSE httpTransportSE = new HttpTransportSE(AccountUtils.getIpAddress(context) + url, timeOut);
                 httpTransportSE.call("urn:action", soapEnvelope);

@@ -1,6 +1,7 @@
 package com.mpt.hxqh.mpt_project.ui.actvity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -20,12 +21,17 @@ import com.flyco.dialog.listener.OnOperItemClickL;
 import com.flyco.dialog.widget.NormalDialog;
 import com.flyco.dialog.widget.NormalListDialog;
 import com.mpt.hxqh.mpt_project.R;
+import com.mpt.hxqh.mpt_project.api.JsonUtils;
 import com.mpt.hxqh.mpt_project.config.Constants;
 import com.mpt.hxqh.mpt_project.manager.AppManager;
+import com.mpt.hxqh.mpt_project.model.DISMANTLE;
 import com.mpt.hxqh.mpt_project.model.WebResult;
 import com.mpt.hxqh.mpt_project.unit.AccountUtils;
 import com.mpt.hxqh.mpt_project.unit.DateTimeSelect;
 import com.mpt.hxqh.mpt_project.webserviceclient.AndroidClientService;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 资产拆除新增
@@ -48,9 +54,6 @@ public class Dismantle_AddNew_Activity extends BaseActivity {
 
     private EditText descriptionTextView; //description
     private TextView locationTextView; //location
-    private TextView retirelocTextView; //retireloc
-    private TextView retiredateTextView;//retiredate
-
     private BaseAnimatorSet mBasIn;
     private BaseAnimatorSet mBasOut;
 
@@ -58,6 +61,7 @@ public class Dismantle_AddNew_Activity extends BaseActivity {
     private Button quit;
     private Button option;
     private String[] optionList = new String[]{"Back", "Save"};
+    private DISMANTLE dismantle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +87,6 @@ public class Dismantle_AddNew_Activity extends BaseActivity {
 
         descriptionTextView = (EditText) findViewById(R.id.description_text_id);
         locationTextView = (TextView) findViewById(R.id.location_text_id);
-        retirelocTextView = (TextView) findViewById(R.id.location_text_id);
-        retiredateTextView = (TextView) findViewById(R.id.location_text_id);
-
         buttonLayout = (LinearLayout) findViewById(R.id.button_layout);
         quit = (Button) findViewById(R.id.quit);
         option = (Button) findViewById(R.id.option);
@@ -96,13 +97,11 @@ public class Dismantle_AddNew_Activity extends BaseActivity {
         backImageView.setOnClickListener(backImageViewOnClickListener);
         backImageView.setVisibility(View.GONE);
         buttonLayout.setVisibility(View.VISIBLE);
-        titleTextView.setText(R.string.asset_retirement_text);
+        titleTextView.setText("Asset Dismantle");
         submit.setText("save");
 //        submit.setVisibility(View.VISIBLE);
 
         locationTextView.setOnClickListener(locationTextViewOnClickListener);
-        retirelocTextView.setOnClickListener(retirelocTextViewOnClickListener);
-        retiredateTextView.setOnClickListener(DateOnClickListener);
         submit.setOnClickListener(submitOnClickListener);
 
         quit.setOnClickListener(quitOnClickListener);
@@ -204,16 +203,6 @@ public class Dismantle_AddNew_Activity extends BaseActivity {
     };
 
     /**
-     *
-     **/
-    private View.OnClickListener DateOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            new DateTimeSelect(Dismantle_AddNew_Activity.this, retiredateTextView).showDialog();
-        }
-    };
-
-    /**
      * 提交数据*
      */
     private void submitDataInfo() {
@@ -233,6 +222,7 @@ public class Dismantle_AddNew_Activity extends BaseActivity {
                     @Override
                     public void onBtnClick() {
                         showProgressDialog("Waiting...");
+                        saveDismantle();
                         startAsyncTask();
                         dialog.dismiss();
                     }
@@ -243,23 +233,21 @@ public class Dismantle_AddNew_Activity extends BaseActivity {
      * 提交数据*
      */
     private void startAsyncTask() {
-        new AsyncTask<String, String, WebResult>() {
+        new AsyncTask<String, String, String>() {
             @Override
-            protected WebResult doInBackground(String... strings) {
+            protected String doInBackground(String... strings) {
 //                WebResult reviseresult = AndroidClientService.insertMbo(Dismantle_AddNew_Activity.this,descriptionTextView.getText().toString(),Constants.DISMANTLE_NAME,Constants.TRANSFER_URL,AccountUtils.getpersonId(Dismantle_AddNew_Activity.this));
-               WebResult reviseresult = AndroidClientService.AddRetire(Dismantle_AddNew_Activity.this, descriptionTextView.getText().toString(),
-                        locationTextView.getText().toString(), retirelocTextView.getText().toString(), retiredateTextView.getText().toString(), AccountUtils.getpersonId(Dismantle_AddNew_Activity.this), Constants.TRANSFER_URL);
-
+               String reviseresult = AndroidClientService.insertMbo(Dismantle_AddNew_Activity.this, JsonUtils.dismantleJSON(dismantle),Constants.DISMANTLE_NAME,"UDORDERNUM",Constants.WORK_URL,AccountUtils.getpersonId(Dismantle_AddNew_Activity.this));
                 return reviseresult;
             }
 
             @Override
-            protected void onPostExecute(WebResult workResult) {
+            protected void onPostExecute(String workResult) {
                 super.onPostExecute(workResult);
                 if (workResult == null) {
                     Toast.makeText(Dismantle_AddNew_Activity.this, "false", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(Dismantle_AddNew_Activity.this, workResult.returnStr, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Dismantle_AddNew_Activity.this,workResult , Toast.LENGTH_SHORT).show();
 //                    setResult(100);
                     finish();
                 }
@@ -278,16 +266,22 @@ public class Dismantle_AddNew_Activity extends BaseActivity {
                 String location = data.getExtras().getString("Location");
                 if (requestCode == LOCATION_CODE) {
                     locationTextView.setText(location);
-                } else if (requestCode == RETIRE_CODE) {
-                    retirelocTextView.setText(location);
                 }
-
-
                 break;
 //            case RESULT_OK:
 //                String result = data.getExtras().getString("result");
 //                snTextView.setText(result);
 //                break;
         }
+    }
+    public DISMANTLE saveDismantle(){
+        dismantle = new DISMANTLE();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:dd");
+        Date date = new Date();
+        dismantle.setCREATEBY(AccountUtils.getUserName(this));
+        dismantle.setCREATEDATE(format.format(date));
+        dismantle.setDESCRIPTION(descriptionTextView.getText().toString());
+        dismantle.setLOCATION(locationTextView.getText().toString());
+        return dismantle;
     }
 }

@@ -92,6 +92,7 @@ public class Dismantle_Details_Activity extends BaseActivity {
     private BaseAnimatorSet mBasOut;
 
     private String[] optionList = new String[]{"Back","Scan"};
+    private String  line ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,10 +232,11 @@ public class Dismantle_Details_Activity extends BaseActivity {
 //                        case 1://Route
 //                            break;
                         case 1://Scan
-                            if ("APPR".equals(dismantle.getSTATUS()) || "rece".equalsIgnoreCase(dismantle.getSTATUS())){
+                            if ("WHAPPR".equals(dismantle.getSTATUS()) || "APPR".equalsIgnoreCase(dismantle.getSTATUS())){
                                 Intent lineIntent = new Intent(Dismantle_Details_Activity.this, DismantleScan_Activity.class);
                                 lineIntent.putExtra("assetnum",dismantle.getUDORDERNUM());
                                 lineIntent.putExtra("status",dismantle.getSTATUS());
+                                lineIntent.putExtra("line",line);
                                 startActivity(lineIntent);
                             }else {
                                 Toast.makeText(Dismantle_Details_Activity.this,"Not in scaning status",Toast.LENGTH_SHORT).show();
@@ -257,8 +259,9 @@ public class Dismantle_Details_Activity extends BaseActivity {
 
     private View.OnClickListener planOnClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View v) { //计划
+        public void onClick(View v) { //
             position = 0;
+            line = "Asset";
             initAdapter1(new ArrayList<DISMANTLELINE>());
             getData1();
             planButton.setBackgroundResource(R.drawable.button_selector);
@@ -269,6 +272,7 @@ public class Dismantle_Details_Activity extends BaseActivity {
     private View.OnClickListener actualOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) { //实际
+            line = "Replace";
             position = 1;
             initAdapter2(new ArrayList<DISMANTLELINE>());
             getData2();

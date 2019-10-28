@@ -18,8 +18,8 @@ public class Dismantle_ScanAdapter extends BaseQuickAdapter<DISMANTLELINE> {
     @Override
     protected void convert(BaseViewHolder helper, DISMANTLELINE item) {
         LinearLayout linearLayout  = helper.getView(R.id.parent_id);
-        if (item.getSCANSN()!=null && item.getSCANSN().equals(item.getSERIAL())){
-            if (item.getSECSCAN()!=null && item.getSECSCAN().equals(item.getSERIAL())){
+        if (item.getFIRSTSCAN()!=null && item.getFIRSTSCAN().equals(item.getSERIAL())){
+            if (item.getSECONDSCAN()!=null && item.getSECONDSCAN().equals(item.getSERIAL())){
                 linearLayout.setBackgroundResource(R.color.title_color);
             }else {
                 linearLayout.setBackgroundResource(R.color.blue);
@@ -29,8 +29,8 @@ public class Dismantle_ScanAdapter extends BaseQuickAdapter<DISMANTLELINE> {
         }
         helper.setText(R.id.assetnum_id, item.getASSETNUM());
         helper.setText(R.id.serial_id, item.getSERIAL());
-        if (item.getSECSCAN()!= null && !item.getSECSCAN().equals("")){
-            helper.setText(R.id.scan_serial_id,item.getSECSCAN());
+        if (item.getSECONDSCAN()!= null && !item.getSECONDSCAN().equals("")){
+            helper.setText(R.id.scan_serial_id,item.getSECONDSCAN());
         }
         helper.setText(R.id.match_id,item.getUDREMARK());
         helper.setOnClickListener(R.id.match_id,new OnItemChildClickListener());

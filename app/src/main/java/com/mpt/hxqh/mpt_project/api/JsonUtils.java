@@ -1706,6 +1706,27 @@ public class JsonUtils<E> {
         Log.i(TAG, "json=" + json);
         return json.toString();
     }
+    public static String  dismantleJSON(DISMANTLE dismantle){
+
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("DESCRIPTION", dismantle.getDESCRIPTION());
+            json.put("LOCATION",dismantle.getLOCATION());
+            json.put("CREATEDATE",dismantle.getCREATEDATE());
+            json.put("CREATEDATE",dismantle.getCREATEDATE());
+            JSONArray jsonArray = new JSONArray();
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("", "");
+            jsonArray.put(jsonObject);
+            json.put("relationShip", jsonArray);
+        } catch (JSONException e) {
+            return null;
+        }
+
+        Log.i(TAG, "json=" + json);
+        return json.toString();
+    }
 
 
 }

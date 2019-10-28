@@ -17,8 +17,42 @@ public class DISMANTLELINE implements Serializable {
     private String UDREMARK;
     private String UDTOLOC;
     private String UDORDERNUM;
-    private  String SCANSN;
-    private  String SECSCAN;
+    private String FIRSTSCAN;
+    private String SECONDSCAN;
+    private String UDREPLACEID;
+    private String UDDISMANTLELINEID;
+
+    public String getUDREPLACEID() {
+        return UDREPLACEID;
+    }
+
+    public void setUDREPLACEID(String UDREPLACEID) {
+        this.UDREPLACEID = UDREPLACEID;
+    }
+
+    public String getUDDISMANTLELINEID() {
+        return UDDISMANTLELINEID;
+    }
+
+    public void setUDDISMANTLELINEID(String UDDISMANTLELINEID) {
+        this.UDDISMANTLELINEID = UDDISMANTLELINEID;
+    }
+
+    public String getFIRSTSCAN() {
+        return FIRSTSCAN;
+    }
+
+    public void setFIRSTSCAN(String FIRSTSCAN) {
+        this.FIRSTSCAN = FIRSTSCAN;
+    }
+
+    public String getSECONDSCAN() {
+        return SECONDSCAN;
+    }
+
+    public void setSECONDSCAN(String SECONDSCAN) {
+        this.SECONDSCAN = SECONDSCAN;
+    }
 
     public String getUDORDERNUM() {
         return UDORDERNUM;
@@ -92,31 +126,15 @@ public class DISMANTLELINE implements Serializable {
         return UDTOLOC;
     }
 
-    public String getSCANSN() {
-        return SCANSN;
-    }
-
-    public void setSCANSN(String SCANSN) {
-        this.SCANSN = SCANSN;
-    }
-
-    public String getSECSCAN() {
-        return SECSCAN;
-    }
-
-    public void setSECSCAN(String SECSCAN) {
-        this.SECSCAN = SECSCAN;
-    }
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("{");
         sb.append("\"UDREMARK\":\"")
                 .append(UDREMARK ==null?"": UDREMARK).append('\"');
-        sb.append(",\"SCANSN\":\"")
-                .append(SCANSN==null?"":SCANSN).append('\"');
-        sb.append(",\"SECSCAN\":\"")
-                .append(SECSCAN==null?"":SECSCAN).append('\"');
+        sb.append(",\"FIRSTSCAN\":\"")
+                .append(FIRSTSCAN==null?"":FIRSTSCAN).append('\"');
+        sb.append(",\"SECONDSCAN\":\"")
+                .append(SECONDSCAN==null?"":SECONDSCAN).append('\"');
         sb.append(",\"relationShip\":[{\"\":\"\"}]");
         sb.append('}');
         return sb.toString();

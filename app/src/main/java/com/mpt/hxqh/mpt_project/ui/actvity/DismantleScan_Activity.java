@@ -90,6 +90,7 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
     String mainnum;
     String status;
     String[] optionlist = {"Back"};
+    String line;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +124,7 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
         option.setOnClickListener(this);
         scanButton.setOnClickListener(this);
 //        assetnum.setText("Asset");
-        titleTextView.setText("Asset Repair");
+        titleTextView.setText("Asset Dismantle");
         buttonLayout.setVisibility(View.VISIBLE);
         layoutManager = new LinearLayoutManager(DismantleScan_Activity.this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -142,14 +143,24 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
         refresh_layout.setRefreshing(true);
         initData();
         initAdapter(new ArrayList<DISMANTLELINE>());
-        getData();
+        if (line.equalsIgnoreCase("Asset")){
+            getData();
+        }else {
+            getData2();
+        }
+
     }
 
     private SwipeRefreshLayout.OnRefreshListener refreshOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
             page = 1;
-            getData();
+
+            if (line.equalsIgnoreCase("Asset")){
+                getData();
+            }else {
+                getData2();
+            }
         }
     };
 
@@ -157,7 +168,11 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
         @Override
         public void onLoad() {
             page++;
-            getData();
+            if (line.equalsIgnoreCase("Asset")){
+                getData();
+            }else {
+                getData2();
+            };
         }
     };
 
@@ -297,6 +312,47 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
             }
         });
     }
+    /**
+     * 获取数据*
+     */
+    private void getData2() {
+        HttpManager.getDataPagingInfo(DismantleScan_Activity.this, HttpManager.getUdreplaceURL(mainnum, page, 20), new HttpRequestHandler<Results>() {
+            @Override
+            public void onSuccess(Results results) {
+            }
+
+            @Override
+            public void onSuccess(Results results, int totalPages, int currentPage) {
+                ArrayList<DISMANTLELINE> item = JsonUtils.parsingDismantleLine(results.getResultlist());
+                refresh_layout.setRefreshing(false);
+                refresh_layout.setLoading(false);
+                if (item == null || item.isEmpty()) {
+                    nodatalayout.setVisibility(View.VISIBLE);
+                } else {
+                    if (page == 1) {
+                        items = new ArrayList<DISMANTLELINE>();
+                        initAdapter(items);
+                    }
+                    if (page > totalPages) {
+                        MessageUtils.showMiddleToast(DismantleScan_Activity.this, getString(R.string.have_load_out_all_the_data));
+                    } else {
+                        for (int i = 0; i < item.size(); i++) {
+                            items.add(item.get(i));
+                        }
+                        addData(item);
+                    }
+                    nodatalayout.setVisibility(View.GONE);
+                    //initAdapter(items);
+                }
+            }
+
+            @Override
+            public void onFailure(String error) {
+                refresh_layout.setRefreshing(false);
+                nodatalayout.setVisibility(View.VISIBLE);
+            }
+        });
+    }
 
     /**
      * 添加数据*
@@ -308,6 +364,7 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
     private void initData() {
         mainnum = getIntent().getStringExtra("assetnum");
         status = getIntent().getStringExtra("status");
+        line = getIntent().getStringExtra("line");
 
     }
 
@@ -349,13 +406,13 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
                     });
                 } else {
                     if ("APPR".equals(status)) {
-                        if (item.get(0).getSCANSN() != null && item.get(0).getSCANSN().equals(item.get(0).getSERIAL())) {
+                        if (item.get(0).getFIRSTSCAN() != null && item.get(0).getFIRSTSCAN().equals(item.get(0).getSERIAL())) {
                             Toast.makeText(DismantleScan_Activity.this, "The SN is already scaned", Toast.LENGTH_SHORT).show();
                         } else {
                             showConfirmDialog(item.get(0));
                         }
                     } else {
-                        if (item.get(0).getSECSCAN() != null && item.get(0).getSECSCAN().equals(item.get(0).getSERIAL())) {
+                        if (item.get(0).getSECONDSCAN() != null && item.get(0).getSECONDSCAN().equals(item.get(0).getSERIAL())) {
                             Toast.makeText(DismantleScan_Activity.this, "The SN is already scaned", Toast.LENGTH_SHORT).show();
                         } else {
                             showConfirmDialog(item.get(0));
@@ -396,24 +453,24 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
                         boolean flag = false;
                         for (int i = 0; i < items.size(); i++) {
                             if ((items.get(i).getSERIAL()==null?"":items.get(i).getSERIAL()).equals(invuseline.getSERIAL())) {
-                                if ("APPR".equals(status)) {
-                                    items.get(i).setSCANSN(invuseline.getSERIAL());
-                                    invuseline.setSCANSN(invuseline.getSERIAL());
+                                if ("WHAPPR".equals(status)) {
+                                    items.get(i).setFIRSTSCAN(invuseline.getSERIAL());
+                                    invuseline.setFIRSTSCAN(invuseline.getSERIAL());
                                     flag = true;
                                     break;
                                 } else {
-                                    items.get(i).setSECSCAN(invuseline.getSERIAL());
-                                    invuseline.setSECSCAN(invuseline.getSERIAL());
+                                    items.get(i).setSECONDSCAN(invuseline.getSERIAL());
+                                    invuseline.setSECONDSCAN(invuseline.getSERIAL());
                                     flag = true;
                                     break;
                                 }
                             }
                         }
                         if (!flag) {
-                            if ("APPR".equals(status)) {
-                                invuseline.setSCANSN(invuseline.getSERIAL());
+                            if ("WHAPPR".equals(status)) {
+                                invuseline.setFIRSTSCAN(invuseline.getSERIAL());
                             } else {
-                                invuseline.setSECSCAN(invuseline.getSERIAL());
+                                invuseline.setFIRSTSCAN(invuseline.getSERIAL());
                             }
                             items.add(invuseline);
                         }
@@ -429,7 +486,19 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
 
             @Override
             protected String doInBackground(String... strings) {
-                String results = AndroidClientService.UpdateWO(DismantleScan_Activity.this, dismantleline.toString(), "DISMANTLELINE", "MATUSETRANSID", dismantleline.getUDORDERNUM(), Constants.WORK_URL);
+                String mboName;
+                String mboKey;
+                String mboValue;
+                if (line.equalsIgnoreCase("Asset")){
+                    mboName = "UDDISMANTLELINE";
+                    mboKey = "UDDISMANTLELINEID";
+                    mboValue = dismantleline.getUDDISMANTLELINEID();
+                }else {
+                    mboName = "UDREPLACE";
+                    mboKey = "UDREPLACEID";
+                    mboValue = dismantleline.getUDREPLACEID();
+                }
+                    String results = AndroidClientService.UpdateWO(DismantleScan_Activity.this, dismantleline.toString(),mboName ,mboKey ,mboValue , Constants.WORK_URL);
                 return results;
             }
 

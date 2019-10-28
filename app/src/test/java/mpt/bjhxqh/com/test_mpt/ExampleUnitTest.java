@@ -33,20 +33,21 @@ public class ExampleUnitTest {
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
-        SoapObject soapReq = new SoapObject("http://www.ibm.com/maximo", "mptmobileserviceAddMatSto");
+        SoapObject soapReq = new SoapObject("http://www.ibm.com/maximo", "mobileserviceInsertMbo");
         soapReq.addProperty("DESCRIPTION", "测试");//描述
         soapReq.addProperty("LOCATION", "AWD00330");//位置
         soapReq.addProperty("VENDOR", "MPT");//供应商
         soapReq.addProperty("CREATEBY", "uattest2");//创建人
         soapReq.addProperty("VISITD", "2019-08-30");//更新时间
         soapEnvelope.setOutputSoapObject(soapReq);
-        HttpsTransportSE httpTransport = new HttpsTransportSE("45.112.178.173", 9080, "/meaweb/services/MPTMOBILESERVICE?wsdl", 15000);
+        HttpsTransportSE httpTransport = new HttpsTransportSE("45.112.178.173", 9080, "/meaweb/services/MOBILESERVICE?wsdl", 15000);
 
-        SslRequest.allowAllSSL("https://45.112.178.173:9080/meaweb/services/MPTMOBILESERVICE?wsdl", new MainActivity());
+        //SslRequest.allowAllSSL("https://45.112.178.173:9080/meaweb/services/MPTMOBILESERVICE?wsdl", new MainActivity());
+        SslRequest.allowAllSSL("https://45.112.178.173:9080/meaweb/services/MOBILESERVICE?wsdl", new MainActivity());
         //HttpTransportSE httpTransport = new HttpTransportSE(AccountUtils.getIpAddress(context) + url, timeOut);
         try {
 
-            httpTransport.call("http://www.ibm.com/maximo"+"/mptmobileserviceAddMatSto", soapEnvelope);
+            httpTransport.call("http://www.ibm.com/maximo"+"/mobileserviceInsertMbo", soapEnvelope);
         } catch (IOException | XmlPullParserException e) {
             e.printStackTrace();
             System.out.println(e);
