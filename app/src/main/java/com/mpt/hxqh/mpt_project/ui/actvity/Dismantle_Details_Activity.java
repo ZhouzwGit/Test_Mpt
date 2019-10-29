@@ -108,6 +108,7 @@ public class Dismantle_Details_Activity extends BaseActivity {
 
     private void initData() {
         dismantle = (DISMANTLE) getIntent().getSerializableExtra("dismantle");
+        line ="Asset";
     }
 
     @Override

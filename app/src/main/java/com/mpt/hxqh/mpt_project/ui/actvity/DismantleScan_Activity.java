@@ -147,6 +147,7 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
             getData();
         }else {
             getData2();
+
         }
 
     }
