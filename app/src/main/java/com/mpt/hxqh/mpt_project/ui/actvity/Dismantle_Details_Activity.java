@@ -140,7 +140,7 @@ public class Dismantle_Details_Activity extends BaseActivity {
     protected void initView() {
         backImageView.setOnClickListener(backImageViewOnClickListener);
         backImageView.setVisibility(View.GONE);
-        titleTextView.setText(R.string.Material_outbound_text);
+        titleTextView.setText("Asset Dismantle");
 
         buttonLayout.setVisibility(View.VISIBLE);
         if (dismantle != null) {

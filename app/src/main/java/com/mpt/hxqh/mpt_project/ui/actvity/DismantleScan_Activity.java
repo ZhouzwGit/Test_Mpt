@@ -124,7 +124,7 @@ public class DismantleScan_Activity extends BaseActivity implements View.OnClick
         option.setOnClickListener(this);
         scanButton.setOnClickListener(this);
 //        assetnum.setText("Asset");
-        titleTextView.setText("Asset Dismantle");
+        titleTextView.setText(line);
         buttonLayout.setVisibility(View.VISIBLE);
         layoutManager = new LinearLayoutManager(DismantleScan_Activity.this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

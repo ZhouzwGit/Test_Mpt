@@ -161,7 +161,7 @@ public class Asset_Dismantle_Activity extends BaseActivity implements SwipeRefre
             }
         });
         backImageView.setVisibility(View.GONE);
-        titleTextView.setText(R.string.asset_repair_text);
+        titleTextView.setText("Asset Dismantle");
 //        addBtn.setVisibility(View.VISIBLE);
         buttonLayout.setVisibility(View.VISIBLE);
         layoutManager = new LinearLayoutManager(Asset_Dismantle_Activity.this);
